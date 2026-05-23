@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_background"
+    tools:context=".MainActivity">
+
+    <!-- Container for active layouts -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="64dp">
+
+        <!-- ================= ORDERS LAYOUT ================= -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/layout_orders_page"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Yellow Header Banner -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:background="@color/primary_yellow"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="28dp">
+
+                    <TextView
+                        android:id="@+id/tv_header_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="My Orders"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_header_desc"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_header_title"
+                        android:layout_marginTop="8dp"
+                        android:text="View your completed trips here. You can download invoices or quickly book the same order again."
+                        android:textColor="@color/black"
+                        android:textSize="13sp"
+                        android:lineSpacingExtra="2dp" />
+
+                    <!-- Truck Graphic Illustration on the right -->
+                    <ImageView
+                        android:layout_width="140dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_below="@id/tv_header_title"
+                        android:layout_marginTop="-10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/header_orders_truck" />
+
+                </RelativeLayout>
+
+                <!-- White Sheet Layout with rounded top corners -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-20dp"
+                    android:background="@drawable/bg_main_sheet"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Search and Filters row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp">
+
+                        <!-- Search Bar -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1.6"
+                            android:background="@drawable/bg_search_bar"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_search"
+                                app:tint="@color/grey_text" />
+
+                            <EditText
+                                android:id="@+id/et_search"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:hint="Search by Order ID / Location"
+                                android:inputType="text"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/grey_text"
+                                android:textSize="13sp"
+                                android:imeOptions="actionSearch" />
+                        </LinearLayout>
+
+                        <!-- Filter Button -->
+                        <LinearLayout
+                            android:id="@+id/btn_filter"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="0.8"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/bg_outline_button"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_filter"
+                                app:tint="@color/black" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="Filter"
+                                android:textColor="@color/black"
+                                android:textSize="13sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                        <!-- Sort Button -->
+                        <LinearLayout
+                            android:id="@+id/btn_sort"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="0.8"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/bg_outline_button"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_sort"
+                                app:tint="@color/black" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="Sort"
+                                android:textColor="@color/black"
+                                android:textSize="13sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Horizontal Tabs -->
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none"
+                        android:layout_marginBottom="16dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="2dp">
+
+                            <TextView
+                                android:id="@+id/tab_all"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_tab_selected"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:text="All Orders"
+                                android:textColor="@color/black"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                android:clickable="true"
+                                android:focusable="true" />
+
+                            <TextView
+                                android:id="@+id/tab_completed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_tab_unselected"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:text="Completed"
+                                android:textColor="@color/grey_text"
+                                android:textSize="13sp"
+                                android:clickable="true"
+                                android:focusable="true" />
+
+                            <TextView
+                                android:id="@+id/tab_cancelled"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_tab_unselected"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:text="Cancelled"
+                                android:textColor="@color/grey_text"
+                                android:textSize="13sp"
+                                android:clickable="true"
+                                android:focusable="true" />
+
+                            <TextView
+                                android:id="@+id/tab_booked_again"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_tab_unselected"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:text="Booked Again"
+                                android:textColor="@color/grey_text"
+                                android:textSize="13sp"
+                                android:clickable="true"
+                                android:focusable="true" />
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
+
+                    <!-- Purple Info Banner -->
+                    <RelativeLayout
+                        android:id="@+id/banner_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_info_banner"
+                        android:padding="12dp"
+                        android:layout_marginBottom="16dp">
+
+                        <ImageView
+                            android:id="@+id/iv_info_icon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_info"
+                            app:tint="@color/banner_icon"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_toEndOf="@id/iv_info_icon"
+                            android:layout_toStartOf="@id/btn_close_banner"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="यहाँ आपके सभी पिछले ऑर्डर दिखाए गए हैं।"
+                                android:textColor="@color/banner_text"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="आप इनवॉइस डाउनलोड कर सकते हैं या उसी पते पर दोबारा ऑर्डर कर सकते हैं।"
+                                android:textColor="@color/banner_text"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/btn_close_banner"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_close"
+                            app:tint="@color/black"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentTop="true"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackgroundBorderless" />
+
+                    </RelativeLayout>
+
+                    <!-- RecyclerView for Order List -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_orders"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        tools:listitem="@layout/item_order" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- ================= HOME LAYOUT PLACEHOLDER ================= -->
+        <FrameLayout
+            android:id="@+id/layout_home_page"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/grey_background"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Home Screen"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <!-- ================= PAYMENTS LAYOUT PLACEHOLDER ================= -->
+        <FrameLayout
+            android:id="@+id/layout_payments_page"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/grey_background"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Payments Screen"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <!-- ================= ACCOUNT LAYOUT PLACEHOLDER ================= -->
+        <FrameLayout
+            android:id="@+id/layout_account_page"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/grey_background"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Account Screen"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+    </FrameLayout>
+
+    <!-- Help Floating Button layout -->
+    <LinearLayout
+        android:id="@+id/btn_help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="80dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <FrameLayout
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_help_circle"
+            android:elevation="4dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_help"
+                android:layout_gravity="center"
+                app:tint="@color/black" />
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Help"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Bottom Navigation Bar (Fixed at the bottom of CoordinatorLayout) -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        app:elevation="8dp"
+        app:itemIconTint="@color/bottom_nav_color"
+        app:itemTextColor="@color/bottom_nav_color"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

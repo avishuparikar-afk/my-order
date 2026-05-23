@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MyOrders" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary_yellow</item>
+        <item name="colorPrimaryVariant">@color/primary_yellow_dark</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/primary_yellow</item>
+        <item name="colorSecondaryVariant">@color/primary_yellow_dark</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/primary_yellow</item>
+        <!-- Light status bar so status bar icons are dark (since yellow is light) -->
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Customize your theme here. -->
+    </style>
+</resources>

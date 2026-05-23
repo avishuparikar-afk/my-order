@@ -1,0 +1,4 @@
+<resources>
+    <color name="ic_launcher_background">#FFFFFF</color>
+    <string name="app_name">My Orders</string>
+</resources>
